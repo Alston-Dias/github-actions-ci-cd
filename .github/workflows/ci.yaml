@@ -54,7 +54,7 @@ jobs:
           npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Deploy to Staging
+      - name: Deploy to Staging server
         if: ${{github.event_name == 'push' && github.ref == 'refs/heads/develop'}}
         run: npx surge --project ./build --domain nappy-action.surge.sh
       - name: Deploy to Production
