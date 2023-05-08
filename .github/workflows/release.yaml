@@ -10,4 +10,4 @@ jobs:
         steps:
             - name: Slack Message
               run: |
-                echo "Need to add the curl command to send messageds"
+                echo "New release ${{ github.event.release.tag_name }} is out, url: ${{ github.event.release.html_url }}"

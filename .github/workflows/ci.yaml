@@ -53,7 +53,7 @@ jobs:
         run:
           npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Deploy to Staging server
         if: ${{github.event_name == 'push' && github.ref == 'refs/heads/develop'}}
         run: npx surge --project ./build --domain nappy-action.surge.sh
@@ -65,5 +65,8 @@ jobs:
         run: npx codecov
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Open Issue
+        if: failure() && github.event_name == 'pull_request'
+        run: 
 
 
